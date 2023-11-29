@@ -11,4 +11,17 @@ class ShareHelper {
     bool? isTheme = await shr.getBool("theme");
     return isTheme;
   }
+
+  Future<void> profileOn(bool isVisible) async {
+    SharedPreferences shr = await SharedPreferences.getInstance();
+    shr.setBool("profile", isVisible);
+  }
+
+  Future<bool?> profileOff() async {
+    SharedPreferences shr = await SharedPreferences.getInstance();
+    bool? isUnVisible = await shr.getBool("profile");
+    return isUnVisible;
+  }
+
+
 }
