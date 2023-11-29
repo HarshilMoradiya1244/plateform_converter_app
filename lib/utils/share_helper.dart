@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 class ShareHelper {
 
-  void setTheme(bool isTheme) async {
+  Future<void> setTheme(bool isTheme) async {
     SharedPreferences shr = await SharedPreferences.getInstance();
     shr.setBool("theme", isTheme);
   }
