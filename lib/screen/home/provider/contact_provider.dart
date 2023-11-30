@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:plateform_converter_app/screen/callScreen/view/call_screen_android.dart';
 import 'package:plateform_converter_app/screen/chatScreen/view/chat_screen_android.dart';
@@ -15,9 +14,8 @@ class ContactProvider with ChangeNotifier {
   int? infoIndex = 0;
   String? imagePath;
   String? path;
+  String? profilePath;
   bool isLock = false;
-
-
 
 
   void changeDate(DateTime? d1){
@@ -58,9 +56,18 @@ class ContactProvider with ChangeNotifier {
     path = newPath;
     notifyListeners();
   }
+  void profileImage(String? newPath) {
+    profilePath = newPath;
+    notifyListeners();
+  }
 
   void editContact(HomeModal c1) {
       addDataList[infoIndex!] = c1;
+    notifyListeners();
+  }
+
+  void contactDelete() {
+      addDataList.removeAt(infoIndex!);
     notifyListeners();
   }
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plateform_converter_app/screen/settingScreen/provider/setting_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../utils/share_helper.dart';
-import '../../../utils/thme_provider.dart';
+import '../../../utils/theme_provider.dart';
 
 class SettingScreenAndroid extends StatefulWidget {
   const SettingScreenAndroid({super.key});
