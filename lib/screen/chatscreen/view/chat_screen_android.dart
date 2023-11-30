@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:plateform_converter_app/screen/home/provider/contact_provider.dart';
 import 'package:provider/provider.dart';
+
+import '../../../utils/color_list.dart';
 
 class ChatScreenAndroid extends StatefulWidget {
   const ChatScreenAndroid({super.key});
@@ -40,7 +44,7 @@ class _ChatScreenAndroidState extends State<ChatScreenAndroid> {
                       ? CircleAvatar(
                     radius: 25,
                     backgroundImage: FileImage(File(
-                      "${providerW!.addContactList[index].imagePath}",)),
+                      "${providerw!.addDataList[index].imagePath}",)),
                   )
                       : Container(
                     height:
@@ -53,7 +57,7 @@ class _ChatScreenAndroidState extends State<ChatScreenAndroid> {
                     child: Align(
                       alignment: Alignment.center,
                       child: Text(
-                        "${providerW!.addContactList[index].name!.isNotEmpty ? providerW!.addContactList[index].name!.substring(0, 1).toUpperCase() : 0}",
+                        "${providerw!.addDataList[index].name!.isNotEmpty ? providerw!.addDataList[index].name!.substring(0, 1).toUpperCase() : 0}",
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
@@ -62,11 +66,18 @@ class _ChatScreenAndroidState extends State<ChatScreenAndroid> {
                     width: 20,
                   ),
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("${providerr!.addDataList[index].name}",),
-                      Text("${providerw!.addDataList[index].phone}"),
+                      Text("${providerr!.addDataList[index].name}",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                      Text("${providerw!.addDataList[index].chat}",style: TextStyle(fontSize: 14),),
+                      Spacer(),
+                      Row(
+                        children: [
+                          Text("${providerr!.addDataList[index].date}",),
+                          Text("${providerw!.addDataList[index].time}"),
+                        ],
+                      )
                     ],
                   ),
                 ],

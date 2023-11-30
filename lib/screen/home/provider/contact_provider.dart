@@ -13,6 +13,8 @@ class ContactProvider with ChangeNotifier {
   TimeOfDay? time = TimeOfDay.now();
   int dashIndex = 0;
   int? infoIndex = 0;
+  String? imagePath;
+  String? path;
 
 
 
@@ -50,5 +52,9 @@ class ContactProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void updateImagePath(String? newPath) {
+    path = newPath;
+    notifyListeners();
+  }
 
 }

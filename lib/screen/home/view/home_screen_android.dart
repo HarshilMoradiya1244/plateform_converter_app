@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 import '../modal/home_modal.dart';
@@ -36,13 +39,27 @@ class _HomeScreenAndroidState extends State<HomeScreenAndroid> {
                   const SizedBox(
                     height: 30,
                   ),
-                  CircleAvatar(
-                    radius: 60,
-                    backgroundColor: Colors.pink.shade200,
-                    child: const Icon(
-                      Icons.camera_alt_outlined,
-                      size: 40,
-                    ),
+                  Column(
+                    children: [
+                      Consumer<ContactProvider>( builder: (context, value, child) {
+                        return
+                        CircleAvatar(
+                          radius: 70,
+                          backgroundColor: Colors.grey,
+                          backgroundImage: value.path != null
+                              ? FileImage(File(value.path!))
+                              : null,
+                        );
+                      },),
+                          IconButton(
+                              onPressed: () async {
+                                ImagePicker imgPiker = ImagePicker();
+                                XFile? image = await imgPiker.pickImage(
+                                    source: ImageSource.gallery);
+                                providerr!.updateImagePath(image!.path);
+                              },
+                              icon: const Icon(Icons.image))
+                    ],
                   ),
                   const SizedBox(
                     height: 30,
@@ -131,7 +148,9 @@ class _HomeScreenAndroidState extends State<HomeScreenAndroid> {
                       phone: txtPhoneNo.text,
                       date: txtDate.text,
                       time: txtTime.text,
+                      imagePath: providerw!.path,
                     );
+                    providerr!.updateImagePath(null);
                     providerr!.addContactData(cm);
                     providerw!.dashIndex;
                   }, child: const Text("Save"),)
