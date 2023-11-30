@@ -15,14 +15,14 @@ class HomeScreenAndroid extends StatefulWidget {
 }
 
 class _HomeScreenAndroidState extends State<HomeScreenAndroid> {
-
   ContactProvider? providerr;
   ContactProvider? providerw;
   TextEditingController txtName = TextEditingController();
-  TextEditingController txtPhoneNo= TextEditingController();
-  TextEditingController txtChat= TextEditingController();
-  TextEditingController txtDate= TextEditingController();
-  TextEditingController txtTime= TextEditingController();
+  TextEditingController txtPhoneNo = TextEditingController();
+  TextEditingController txtChat = TextEditingController();
+  TextEditingController txtDate = TextEditingController();
+  TextEditingController txtTime = TextEditingController();
+  GlobalKey<FormState> globalKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -41,64 +41,90 @@ class _HomeScreenAndroidState extends State<HomeScreenAndroid> {
                   ),
                   Column(
                     children: [
-                      Consumer<ContactProvider>( builder: (context, value, child) {
-                        return
-                        CircleAvatar(
-                          radius: 70,
-                          backgroundColor: Colors.grey,
-                          backgroundImage: value.path != null
-                              ? FileImage(File(value.path!))
-                              : null,
-                        );
-                      },),
-                          IconButton(
-                              onPressed: () async {
-                                ImagePicker imgPiker = ImagePicker();
-                                XFile? image = await imgPiker.pickImage(
-                                    source: ImageSource.gallery);
-                                providerr!.updateImagePath(image!.path);
-                              },
-                              icon: const Icon(Icons.image))
+                      Consumer<ContactProvider>(
+                        builder: (context, value, child) {
+                          return CircleAvatar(
+                            radius: 70,
+                            backgroundColor: Colors.grey,
+                            backgroundImage: value.path != null
+                                ? FileImage(File(value.path!))
+                                : null,
+                          );
+                        },
+                      ),
+                      IconButton(
+                          onPressed: () async {
+                            ImagePicker imgPiker = ImagePicker();
+                            XFile? image = await imgPiker.pickImage(
+                                source: ImageSource.gallery);
+                            providerr!.updateImagePath(image!.path);
+                          },
+                          icon: const Icon(Icons.image))
                     ],
                   ),
                   const SizedBox(
                     height: 30,
                   ),
-                   TextField(
-                    controller: txtName,
-                    keyboardType: TextInputType.text,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      label: Text("Full Name"),
-                      prefixIcon: Icon(Icons.person_2_outlined),
+                  Form(
+                    key: globalKey,
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your full name';
+                            }
+                            return null;
+                          },
+                          onChanged: (value) {
+                            if (globalKey.currentState!.validate()) {}
+                          },
+                          controller: txtName,
+                          keyboardType: TextInputType.text,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            label: Text("Full Name"),
+                            prefixIcon: Icon(Icons.person_2_outlined),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        TextFormField(
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your Phone No';
+                            }
+                            return null;
+                          },
+                          onChanged: (value) {
+                            if (globalKey.currentState!.validate()) {}
+                          },
+                          controller: txtPhoneNo,
+                          keyboardType: TextInputType.phone,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            label: Text("Phone Number"),
+                            prefixIcon: Icon(Icons.call_outlined),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        TextField(
+                          controller: txtChat,
+                          keyboardType: TextInputType.text,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            label: Text("Chat Conversation"),
+                            prefixIcon: Icon(Icons.message_outlined),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                      ],
                     ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                   TextField(
-                     controller: txtPhoneNo,
-                    keyboardType: TextInputType.phone,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      label: Text("Phone Number"),
-                      prefixIcon: Icon(Icons.call_outlined),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                   TextField(
-                    controller: txtChat,
-                    keyboardType: TextInputType.text,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      label: Text("Chat Conversation"),
-                      prefixIcon: Icon(Icons.message_outlined),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15,
                   ),
                   Row(
                     children: [
@@ -141,19 +167,22 @@ class _HomeScreenAndroidState extends State<HomeScreenAndroid> {
                       ),
                     ],
                   ),
-                  ElevatedButton(onPressed: () {
-                    HomeModal cm = HomeModal(
-                      name: txtName.text,
-                      chat: txtChat.text,
-                      phone: txtPhoneNo.text,
-                      date: txtDate.text,
-                      time: txtTime.text,
-                      imagePath: providerw!.path,
-                    );
-                    providerr!.updateImagePath(null);
-                    providerr!.addContactData(cm);
-                    providerw!.dashIndex;
-                  }, child: const Text("Save"),)
+                  ElevatedButton(
+                    onPressed: () {
+                      HomeModal cm = HomeModal(
+                        name: txtName.text,
+                        chat: txtChat.text,
+                        phone: txtPhoneNo.text,
+                        date: txtDate.text,
+                        time: txtTime.text,
+                        imagePath: providerw!.path,
+                      );
+                      providerr!.updateImagePath(null);
+                      providerr!.addContactData(cm);
+                      providerw!.dashIndex;
+                    },
+                    child: const Text("Save"),
+                  )
                 ],
               ),
             ),

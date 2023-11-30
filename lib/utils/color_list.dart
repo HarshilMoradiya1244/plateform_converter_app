@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
 
-List<Color> boxcolorList = [Colors.white, ...Colors.primaries];
+List<Color> boxcolorList = [Colors.amber, ...Colors.primaries];
 
-Color grey = Colors.grey.shade500;

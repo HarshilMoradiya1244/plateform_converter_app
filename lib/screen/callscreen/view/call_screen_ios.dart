@@ -37,7 +37,7 @@ class _CallScreenIosState extends State<CallScreenIos> {
               width: MediaQuery.of(context).size.width * 0.10,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: CupertinoColors.inactiveGray),
+                  ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
@@ -52,16 +52,16 @@ class _CallScreenIosState extends State<CallScreenIos> {
                         : Container(
                       height: MediaQuery.of(context).size.height * 0.18,
                       width: MediaQuery.of(context).size.width * 0.20,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         shape: BoxShape.circle,
-                        color: boxcolorList[index],
+                        color: CupertinoColors.systemTeal
                       ),
                       child: Align(
                         alignment: Alignment.center,
                         child: Text(
                           "${providerw!.addDataList[index].name!.isNotEmpty ? providerw!.addDataList[index].name!.substring(0, 1).toUpperCase() : 0}",
                           style: const TextStyle(
-                              fontSize: 20, color:CupertinoColors.black),
+                              fontSize: 20),
                         ),
                       ),
                     ),
@@ -77,7 +77,7 @@ class _CallScreenIosState extends State<CallScreenIos> {
                           style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
-                              color: CupertinoColors.black),
+                             ),
                         ),
                         const SizedBox(
                           height: 10,
@@ -85,12 +85,12 @@ class _CallScreenIosState extends State<CallScreenIos> {
                         Text(
                           "${providerw!.addDataList[index].phone}",
                           style:
-                          const TextStyle(fontSize: 14, color: CupertinoColors.black),
+                          const TextStyle(fontSize: 14,),
                         ),
                       ],
                     ),
                     const Spacer(),
-                   IconButton(onPressed: (){}, icon: Icon(CupertinoIcons.phone_fill,color: CupertinoColors.black,))
+                   IconButton(onPressed: (){}, icon: const Icon(CupertinoIcons.phone_fill),)
                   ],
                 ),
               ),

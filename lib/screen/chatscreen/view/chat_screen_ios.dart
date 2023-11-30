@@ -46,7 +46,7 @@ class _ChatScreenIosState extends State<ChatScreenIos> {
               width: MediaQuery.of(context).size.width * 0.10,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: CupertinoColors.inactiveGray),
+                 ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
@@ -61,18 +61,18 @@ class _ChatScreenIosState extends State<ChatScreenIos> {
                         : Container(
                           height: MediaQuery.of(context).size.height * 0.18,
                           width: MediaQuery.of(context).size.width * 0.20,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             shape: BoxShape.circle,
-                            color: boxcolorList[index],
+                            color: CupertinoColors.systemTeal
                           ),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              "${providerw!.addDataList[index].name!.isNotEmpty ? providerw!.addDataList[index].name!.substring(0, 1).toUpperCase() : 0}",
-                              style: const TextStyle(
-                                  fontSize: 20, color:CupertinoColors.black),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                "${providerw!.addDataList[index].name!.isNotEmpty ? providerw!.addDataList[index].name!.substring(0, 1).toUpperCase() : 0}",
+                                style: const TextStyle(
+                                    fontSize: 20, color:CupertinoColors.black),
+                              ),
                             ),
-                          ),
                         ),
                     const SizedBox(
                       width: 20,
@@ -86,7 +86,7 @@ class _ChatScreenIosState extends State<ChatScreenIos> {
                           style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
-                              color: CupertinoColors.black),
+                              ),
                         ),
                         const SizedBox(
                           height: 10,
@@ -94,7 +94,7 @@ class _ChatScreenIosState extends State<ChatScreenIos> {
                         Text(
                           "${providerw!.addDataList[index].chat}",
                           style:
-                          const TextStyle(fontSize: 14, color: CupertinoColors.black),
+                          const TextStyle(fontSize: 14),
                         ),
                       ],
                     ),
@@ -104,17 +104,15 @@ class _ChatScreenIosState extends State<ChatScreenIos> {
                       children: [
                         Text(
                           "${providerw!.time!.hour}:${providerw!.time!.minute}",
-                          style: const TextStyle(color: CupertinoColors.black),
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
                           "${providerr!.date!.day}/${providerr!.date!.month}/${providerr!.date!.year}",
-                          style: const TextStyle(color: CupertinoColors.black),
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),

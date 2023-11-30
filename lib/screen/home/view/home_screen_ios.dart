@@ -23,6 +23,8 @@ class _HomeScreenIosState extends State<HomeScreenIos> {
   TextEditingController txtChat= TextEditingController();
   TextEditingController txtDate= TextEditingController();
   TextEditingController txtTime= TextEditingController();
+  GlobalKey<FormState> globalKey = GlobalKey<FormState>();
+
 
 
   @override
