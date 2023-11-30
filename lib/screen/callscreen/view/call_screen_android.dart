@@ -84,6 +84,7 @@ class _CallScreenAndroidState extends State<CallScreenAndroid> {
                       const Spacer(),
                     ],
                   ),
+
                   const Spacer(),
                   IconButton(
                     onPressed: () async {
