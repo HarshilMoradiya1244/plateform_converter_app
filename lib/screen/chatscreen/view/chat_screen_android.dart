@@ -46,6 +46,7 @@ class _ChatScreenAndroidState extends State<ChatScreenAndroid> {
                 children: [
                   providerw!.addDataList[index].imagePath != null
                       ? InkWell(
+
                     onTap: (){
                          showWidget(context, c1);
                     },
