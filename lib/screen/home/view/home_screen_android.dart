@@ -47,9 +47,10 @@ class _HomeScreenAndroidState extends State<HomeScreenAndroid> {
                   const SizedBox(
                     height: 30,
                   ),
-                  const TextField(
+                   TextField(
+                    controller: txtName,
                     keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       label: Text("Full Name"),
                       prefixIcon: Icon(Icons.person_2_outlined),
@@ -58,9 +59,10 @@ class _HomeScreenAndroidState extends State<HomeScreenAndroid> {
                   const SizedBox(
                     height: 15,
                   ),
-                  const TextField(
+                   TextField(
+                     controller: txtPhoneNo,
                     keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       label: Text("Phone Number"),
                       prefixIcon: Icon(Icons.call_outlined),
@@ -69,9 +71,10 @@ class _HomeScreenAndroidState extends State<HomeScreenAndroid> {
                   const SizedBox(
                     height: 15,
                   ),
-                  const TextField(
+                   TextField(
+                    controller: txtChat,
                     keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       label: Text("Chat Conversation"),
                       prefixIcon: Icon(Icons.message_outlined),

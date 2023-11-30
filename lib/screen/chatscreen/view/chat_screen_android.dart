@@ -36,6 +36,31 @@ class _ChatScreenAndroidState extends State<ChatScreenAndroid> {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
+                  providerw!.addDataList[index].imagePath != null
+                      ? CircleAvatar(
+                    radius: 25,
+                    backgroundImage: FileImage(File(
+                      "${providerW!.addContactList[index].imagePath}",)),
+                  )
+                      : Container(
+                    height:
+                    MediaQuery.of(context).size.height * 0.18,
+                    width: MediaQuery.of(context).size.width * 0.20,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: boxcolorList[index],
+                    ),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "${providerW!.addContactList[index].name!.isNotEmpty ? providerW!.addContactList[index].name!.substring(0, 1).toUpperCase() : 0}",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +68,7 @@ class _ChatScreenAndroidState extends State<ChatScreenAndroid> {
                       Text("${providerr!.addDataList[index].name}",),
                       Text("${providerw!.addDataList[index].phone}"),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
