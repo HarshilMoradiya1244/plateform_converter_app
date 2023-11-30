@@ -28,7 +28,7 @@ samples, guidance on mobile development, and a full API reference.
    <img src="https://github.com/HarshilMoradiya1244/plateform_converter_app/assets/142592789/cf4495eb-9851-4021-a8ac-d5bffc3ad5f6",hieght="500"width="150">
    <img src="https://github.com/HarshilMoradiya1244/plateform_converter_app/assets/142592789/5ba26cb2-becb-4e0c-9930-ad840b462574",hieght="500"width="150">
    <img src="https://github.com/HarshilMoradiya1244/plateform_converter_app/assets/142592789/eb1c3d4d-00c7-48fd-a7b1-f44c4f48b7b3",hieght="500"width="150">
-   <img src="(https://github.com/HarshilMoradiya1244/plateform_converter_app/assets/142592789/21ce7f68-a5f1-45bc-8bc2-29935a44a31d",hieght="500"width="150">
+   <img src="https://github.com/HarshilMoradiya1244/plateform_converter_app/assets/142592789/21ce7f68-a5f1-45bc-8bc2-29935a44a31d",hieght="500"width="150">
    <img src="https://github.com/HarshilMoradiya1244/plateform_converter_app/assets/142592789/87e7e3ec-5fa2-4369-b99b-80c30ca715cb",hieght="500"width="150">
    <img src="https://github.com/HarshilMoradiya1244/plateform_converter_app/assets/142592789/46e81301-f96b-4a07-bc0b-a4f04260f060",hieght="500"width="150">
    <img src="https://github.com/HarshilMoradiya1244/plateform_converter_app/assets/142592789/405af442-ae2a-4a1a-9e74-2c3f1f70e447",hieght="500"width="150">
