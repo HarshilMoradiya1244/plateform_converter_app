@@ -25,6 +25,7 @@ class _CallScreenAndroidState extends State<CallScreenAndroid> {
 
   @override
   Widget build(BuildContext context) {
+
     providerr = context.read<ContactProvider>();
     providerw = context.watch<ContactProvider>();
     return ListView.builder(

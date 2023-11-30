@@ -14,6 +14,8 @@ class SettingScreenAndroid extends StatefulWidget {
 class _SettingScreenAndroidState extends State<SettingScreenAndroid> {
   SettingProvider? providerr;
   SettingProvider? providerw;
+  TextEditingController txtName = TextEditingController();
+  TextEditingController txtBio = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -66,15 +68,17 @@ class _SettingScreenAndroidState extends State<SettingScreenAndroid> {
                               size: 30,
                             ),
                           ),
-                          const TextField(
+                           TextField(
+                             controller: txtName,
                             keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 label: Center(child: Text("Enter Your Name")),
                                 enabledBorder: InputBorder.none),
                           ),
-                          const TextField(
+                           TextField(
+                            controller: txtBio,
                             keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 label: Center(child: Text("Enter Your Bio")),
                                 enabledBorder: InputBorder.none),
                           ),

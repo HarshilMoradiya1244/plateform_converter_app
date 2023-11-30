@@ -18,15 +18,9 @@ class ChatScreenAndroid extends StatefulWidget {
 class _ChatScreenAndroidState extends State<ChatScreenAndroid> {
   ContactProvider? providerr;
   ContactProvider? providerw;
-  TextEditingController txtName = TextEditingController();
-  TextEditingController txtPhoneNo= TextEditingController();
-  TextEditingController txtChat= TextEditingController();
-  TextEditingController txtDate= TextEditingController();
-  TextEditingController txtTime= TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    HomeModal c1 =
-    ModalRoute.of(context)!.settings.arguments as HomeModal;
     providerr = context.read<ContactProvider>();
     providerw = context.watch<ContactProvider>();
     return ListView.builder(
@@ -46,32 +40,45 @@ class _ChatScreenAndroidState extends State<ChatScreenAndroid> {
                 children: [
                   providerw!.addDataList[index].imagePath != null
                       ? InkWell(
-
-                    onTap: (){
-                         showWidget(context, c1);
-                    },
-                        child: CircleAvatar(
-                    radius: 25,
-                    backgroundImage: FileImage(File(
-                        "${providerw!.addDataList[index].imagePath}",)),
-                  ),
-                      )
-                      : Container(
-                    height:
-                    MediaQuery.of(context).size.height * 0.18,
-                    width: MediaQuery.of(context).size.width * 0.20,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: boxcolorList[index],
-                    ),
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        "${providerw!.addDataList[index].name!.isNotEmpty ? providerw!.addDataList[index].name!.substring(0, 1).toUpperCase() : 0}",
-                        style: const TextStyle(fontSize: 20,color: Colors.black),
-                      ),
-                    ),
-                  ),
+                          onTap: () {
+                            HomeModal c1 = HomeModal(
+                                name: providerr!.addDataList[index].name,
+                                phone: providerr!.addDataList[index].phone,
+                                imagePath: providerr!.addDataList[index].imagePath);
+                            showWidget(context, c1);
+                          },
+                          child: CircleAvatar(
+                            radius: 25,
+                            backgroundImage: FileImage(File(
+                              "${providerw!.addDataList[index].imagePath}",
+                            )),
+                          ),
+                        )
+                      : InkWell(
+                          onTap: () {
+                            HomeModal c1 = HomeModal(
+                                name: providerr!.addDataList[index].name,
+                                phone: providerr!.addDataList[index].phone,
+                                imagePath: providerr!.addDataList[index].imagePath);
+                            showWidget(context, c1);
+                          },
+                          child: Container(
+                            height: MediaQuery.of(context).size.height * 0.18,
+                            width: MediaQuery.of(context).size.width * 0.20,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: boxcolorList[index],
+                            ),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                "${providerw!.addDataList[index].name!.isNotEmpty ? providerw!.addDataList[index].name!.substring(0, 1).toUpperCase() : 0}",
+                                style: const TextStyle(
+                                    fontSize: 20, color: Colors.black),
+                              ),
+                            ),
+                          ),
+                        ),
                   const SizedBox(
                     width: 20,
                   ),
@@ -79,21 +86,40 @@ class _ChatScreenAndroidState extends State<ChatScreenAndroid> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("${providerr!.addDataList[index].name}",style: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black),),
-                      const SizedBox(height: 10,),
-                      Text("${providerw!.addDataList[index].chat}",style: const TextStyle(fontSize: 14,color: Colors.black),),
+                      Text(
+                        "${providerr!.addDataList[index].name}",
+                        style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "${providerw!.addDataList[index].chat}",
+                        style:
+                            const TextStyle(fontSize: 14, color: Colors.black),
+                      ),
                     ],
                   ),
                   Spacer(),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("${providerw!.time!.hour}:${providerw!.time!.minute}",style: const TextStyle(color: Colors.black),),
-                      const SizedBox(height: 10,),
-                      Text("${providerr!.date!.day}/${providerr!.date!.month}/${providerr!.date!.year}",style: const TextStyle(color: Colors.black),),
+                      Text(
+                        "${providerw!.time!.hour}:${providerw!.time!.minute}",
+                        style: const TextStyle(color: Colors.black),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "${providerr!.date!.day}/${providerr!.date!.month}/${providerr!.date!.year}",
+                        style: const TextStyle(color: Colors.black),
+                      ),
                     ],
                   )
-
                 ],
               ),
             ),
