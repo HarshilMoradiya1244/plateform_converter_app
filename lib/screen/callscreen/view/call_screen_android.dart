@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../utils/color_list.dart';
 import '../../home/provider/contact_provider.dart';
@@ -17,10 +18,11 @@ class _CallScreenAndroidState extends State<CallScreenAndroid> {
   ContactProvider? providerr;
   ContactProvider? providerw;
   TextEditingController txtName = TextEditingController();
-  TextEditingController txtPhoneNo= TextEditingController();
-  TextEditingController txtChat= TextEditingController();
-  TextEditingController txtDate= TextEditingController();
-  TextEditingController txtTime= TextEditingController();
+  TextEditingController txtPhoneNo = TextEditingController();
+  TextEditingController txtChat = TextEditingController();
+  TextEditingController txtDate = TextEditingController();
+  TextEditingController txtTime = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     providerr = context.read<ContactProvider>();
@@ -39,30 +41,29 @@ class _CallScreenAndroidState extends State<CallScreenAndroid> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
-
                 children: [
                   providerw!.addDataList[index].imagePath != null
                       ? CircleAvatar(
-                    radius: 25,
-                    backgroundImage: FileImage(File(
-                      "${providerw!.addDataList[index].imagePath}",)),
-                  )
+                          radius: 25,
+                          backgroundImage: FileImage(File(
+                            "${providerw!.addDataList[index].imagePath}",
+                          )),
+                        )
                       : Container(
-                    height:
-                    MediaQuery.of(context).size.height * 0.18,
-                    width: MediaQuery.of(context).size.width * 0.20,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: boxcolorList[index],
-                    ),
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        "${providerw!.addDataList[index].name!.isNotEmpty ? providerw!.addDataList[index].name!.substring(0, 1).toUpperCase() : 0}",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ),
-                  ),
+                          height: MediaQuery.of(context).size.height * 0.18,
+                          width: MediaQuery.of(context).size.width * 0.20,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: boxcolorList[index],
+                          ),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "${providerw!.addDataList[index].name!.isNotEmpty ? providerw!.addDataList[index].name!.substring(0, 1).toUpperCase() : 0}",
+                              style: const TextStyle(fontSize: 20,color: Colors.black),
+                            ),
+                          ),
+                        ),
                   const SizedBox(
                     width: 20,
                   ),
@@ -70,14 +71,28 @@ class _CallScreenAndroidState extends State<CallScreenAndroid> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("${providerr!.addDataList[index].name}",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                      Spacer(),
-                      Text("${providerw!.addDataList[index].phone}",style: TextStyle(fontSize: 15),),
-                      Spacer(),
+                      Text(
+                        "${providerr!.addDataList[index].name}",
+                        style: const TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold,color: Colors.black),
+                      ),
+                      const Spacer(),
+                      Text(
+                        "${providerw!.addDataList[index].phone}",
+                        style: const TextStyle(fontSize: 15,color: Colors.black),
+                      ),
+                      const Spacer(),
                     ],
                   ),
-                  Spacer(),
-                  IconButton(onPressed: (){}, icon: Icon(Icons.call))
+                  const Spacer(),
+                  IconButton(
+                    onPressed: () async {
+                      Uri uri = Uri.parse(
+                          "tel: +91${providerr!.addDataList[index].phone}");
+                      await launchUrl(uri);
+                    },
+                    icon: const Icon(Icons.call,color: Colors.black,),
+                  )
                 ],
               ),
             ),

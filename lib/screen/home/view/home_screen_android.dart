@@ -66,7 +66,7 @@ class _HomeScreenAndroidState extends State<HomeScreenAndroid> {
                   ),
                    TextField(
                     controller: txtName,
-                    keyboardType: TextInputType.emailAddress,
+                    keyboardType: TextInputType.text,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       label: Text("Full Name"),
@@ -78,7 +78,7 @@ class _HomeScreenAndroidState extends State<HomeScreenAndroid> {
                   ),
                    TextField(
                      controller: txtPhoneNo,
-                    keyboardType: TextInputType.emailAddress,
+                    keyboardType: TextInputType.phone,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       label: Text("Phone Number"),
@@ -90,7 +90,7 @@ class _HomeScreenAndroidState extends State<HomeScreenAndroid> {
                   ),
                    TextField(
                     controller: txtChat,
-                    keyboardType: TextInputType.emailAddress,
+                    keyboardType: TextInputType.text,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       label: Text("Chat Conversation"),

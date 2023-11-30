@@ -15,6 +15,8 @@ class ContactProvider with ChangeNotifier {
   int? infoIndex = 0;
   String? imagePath;
   String? path;
+  bool isLock = false;
+
 
 
 
@@ -56,5 +58,11 @@ class ContactProvider with ChangeNotifier {
     path = newPath;
     notifyListeners();
   }
+
+  void editContact(HomeModal c1) {
+      addDataList[infoIndex!] = c1;
+    notifyListeners();
+  }
+
 
 }
