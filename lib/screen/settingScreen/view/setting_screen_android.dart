@@ -14,10 +14,13 @@ class SettingScreenAndroid extends StatefulWidget {
 
 class _SettingScreenAndroidState extends State<SettingScreenAndroid> {
   bool isLight = true;
-  bool isVisible = true;
+  SettingProvider? providerr;
+  SettingProvider? providerw;
 
   @override
   Widget build(BuildContext context) {
+    providerr = context.read<SettingProvider>();
+    providerw = context.watch<SettingProvider>();
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -42,53 +45,45 @@ class _SettingScreenAndroidState extends State<SettingScreenAndroid> {
                       ],
                     ),
                     const Spacer(),
-                    Consumer<SettingProvider>(
-                      builder: (context, value, child) {
-                        return Switch(
-                          value: isVisible,
-                          onChanged: (value1) {
-                            ShareHelper shr = ShareHelper();
-                            shr.profileOn(value1);
-                            value.profile();
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                const CircleAvatar(
-                                  radius: 60,
-                                  child: Icon(
-                                    Icons.camera_alt_outlined,
-                                    size: 30,
-                                  ),
-                                ),
-                                const TextField(
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: InputDecoration(
-                                    label: Text("Enter Your Name"),
-                                  ),
-                                ),
-                                const TextField(
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: InputDecoration(
-                                    label: Text("Enter Your Bio"),
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    TextButton(
-                                        onPressed: () {},
-                                        child: const Text("Save")),
-                                    TextButton(
-                                        onPressed: () {},
-                                        child: const Text("Clear")),
-                                  ],
-                                )
-                              ],
-                            );
-                          },
-                        );
+                    Switch(
+                      value: providerr!.isVisible!,
+                      onChanged: (value) {
+                        providerw!.isVisible = value;
+                        providerr!.profile();
                       },
+                    )
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const CircleAvatar(
+                      radius: 60,
+                      child: Icon(
+                        Icons.camera_alt_outlined,
+                        size: 30,
+                      ),
                     ),
+                    const TextField(
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        label: Text("Enter Your Name"),
+                      ),
+                    ),
+                    const TextField(
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        label: Text("Enter Your Bio"),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton(onPressed: () {}, child: const Text("Save")),
+                        TextButton(
+                            onPressed: () {}, child: const Text("Clear")),
+                      ],
+                    )
                   ],
                 ),
                 const Divider(),
@@ -109,15 +104,11 @@ class _SettingScreenAndroidState extends State<SettingScreenAndroid> {
                       ],
                     ),
                     const Spacer(),
-                    Consumer<ThemeProvider>(
-                      builder: (context, value, child) => Switch(
-                        value: value.isLight,
-                        onChanged: (value1) {
-                          ShareHelper shr = ShareHelper();
-                          shr.setTheme(value1);
-                          value.changeThem();
-                        },
-                      ),
+                    Switch(
+                      value: providerr!.isLight,
+                      onChanged: (value1) {
+                      providerw!.changeThem();
+                      },
                     ),
                   ],
                 ),

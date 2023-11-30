@@ -4,14 +4,22 @@ import '../../../utils/share_helper.dart';
 
 class SettingProvider with ChangeNotifier {
 
-  bool? isVisible = true;
+  bool? isVisible = false;
+  bool isLight = true;
 
 
-  void profile() async {
-    ShareHelper shr = ShareHelper();
-    bool? isTheme = await shr.getTheme();
-    isVisible = isTheme ?? false;
+
+  void profile()  {
+   isVisible != isVisible;
     notifyListeners();
   }
+  void changeThem() async {
+    ShareHelper shr = ShareHelper();
+    bool? isTheme = await shr.getTheme();
+    isLight = isTheme ?? false;
+    notifyListeners();
+  }
+
+
 
 }
