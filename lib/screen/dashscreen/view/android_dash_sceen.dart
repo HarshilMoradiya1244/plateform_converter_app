@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plateform_converter_app/screen/callScreen/view/call_screen_android.dart';
 import 'package:plateform_converter_app/screen/chatScreen/view/chat_screen_android.dart';
 import 'package:plateform_converter_app/screen/dashScreen/provider/dash_provider.dart';
-import 'package:plateform_converter_app/screen/home/view/home_Android_screen.dart';
+import 'package:plateform_converter_app/screen/home/view/home_screen_android.dart';
 import 'package:plateform_converter_app/screen/settingScreen/view/setting_screen_android.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +18,7 @@ class _DashScreenAndroidState extends State<DashScreenAndroid> {
   DashProvider? providerw;
 
   List<Widget> screen = [
-   const AndroidHomeScreen(),
+   const HomeScreenAndroid(),
     const ChatScreenAndroid(),
     const CallScreenAndroid(),
     const SettingScreenAndroid(),

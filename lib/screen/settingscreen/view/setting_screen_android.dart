@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plateform_converter_app/screen/settingScreen/provider/setting_provider.dart';
 import 'package:provider/provider.dart';
-
 import '../../../utils/share_helper.dart';
 import '../../../utils/thme_provider.dart';
 
@@ -13,7 +12,6 @@ class SettingScreenAndroid extends StatefulWidget {
 }
 
 class _SettingScreenAndroidState extends State<SettingScreenAndroid> {
-  bool isLight = true;
   SettingProvider? providerr;
   SettingProvider? providerw;
 
@@ -54,38 +52,44 @@ class _SettingScreenAndroidState extends State<SettingScreenAndroid> {
                     )
                   ],
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const CircleAvatar(
-                      radius: 60,
-                      child: Icon(
-                        Icons.camera_alt_outlined,
-                        size: 30,
-                      ),
-                    ),
-                    const TextField(
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        label: Text("Enter Your Name"),
-                      ),
-                    ),
-                    const TextField(
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        label: Text("Enter Your Bio"),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TextButton(onPressed: () {}, child: const Text("Save")),
-                        TextButton(
-                            onPressed: () {}, child: const Text("Clear")),
-                      ],
-                    )
-                  ],
+                const SizedBox(
+                  height: 10,
                 ),
+                (providerr!.isVisible == true)
+                    ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const CircleAvatar(
+                            radius: 60,
+                            child: Icon(
+                              Icons.camera_alt_outlined,
+                              size: 30,
+                            ),
+                          ),
+                          const TextField(
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                                label: Center(child: Text("Enter Your Name")),
+                                enabledBorder: InputBorder.none),
+                          ),
+                          const TextField(
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                                label: Center(child: Text("Enter Your Bio")),
+                                enabledBorder: InputBorder.none),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              TextButton(
+                                  onPressed: () {}, child: const Text("Save")),
+                              TextButton(
+                                  onPressed: () {}, child: const Text("Clear")),
+                            ],
+                          )
+                        ],
+                      )
+                    : const SizedBox(),
                 const Divider(),
                 Row(
                   children: [
@@ -104,11 +108,15 @@ class _SettingScreenAndroidState extends State<SettingScreenAndroid> {
                       ],
                     ),
                     const Spacer(),
-                    Switch(
-                      value: providerr!.isLight,
-                      onChanged: (value1) {
-                      providerw!.changeThem();
-                      },
+                    Consumer<ThemeProvider>(
+                      builder: (context, value, child) => Switch(
+                        value: value.isLight,
+                        onChanged: (value1) {
+                          ShareHelper shr = ShareHelper();
+                          shr.setTheme(value1);
+                          value.changeThem();
+                        },
+                      ),
                     ),
                   ],
                 ),

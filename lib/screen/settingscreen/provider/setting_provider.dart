@@ -8,7 +8,6 @@ class SettingProvider with ChangeNotifier {
   bool isLight = true;
 
 
-
   void profile()  {
    isVisible != isVisible;
     notifyListeners();

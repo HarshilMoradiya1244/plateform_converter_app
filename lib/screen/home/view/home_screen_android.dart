@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../modal/home_modal.dart';
 import '../provider/contact_provider.dart';
 
-class AndroidHomeScreen extends StatefulWidget {
-  const AndroidHomeScreen({super.key});
+class HomeScreenAndroid extends StatefulWidget {
+  const HomeScreenAndroid({super.key});
 
   @override
-  State<AndroidHomeScreen> createState() => _AndroidHomeScreenState();
+  State<HomeScreenAndroid> createState() => _HomeScreenAndroidState();
 }
 
-class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
-  ContactProvider? ProviderR;
-  ContactProvider? ProviderW;
+class _HomeScreenAndroidState extends State<HomeScreenAndroid> {
+
+  ContactProvider? providerr;
+  ContactProvider? providerw;
+  TextEditingController txtName = TextEditingController();
+  TextEditingController txtPhoneNo= TextEditingController();
+  TextEditingController txtChat= TextEditingController();
+  TextEditingController txtDate= TextEditingController();
+  TextEditingController txtTime= TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    ProviderR = context.read<ContactProvider>();
-    ProviderW = context.watch<ContactProvider>();
+    providerr = context.read<ContactProvider>();
+    providerw = context.watch<ContactProvider>();
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -32,7 +39,7 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                   CircleAvatar(
                     radius: 60,
                     backgroundColor: Colors.pink.shade200,
-                    child: Icon(
+                    child: const Icon(
                       Icons.camera_alt_outlined,
                       size: 40,
                     ),
@@ -77,7 +84,7 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                     children: [
                       const Padding(padding: EdgeInsets.all(10)),
                       Text(
-                        "Date : ${ProviderR!.date?.day}/${ProviderR!.date?.month}/${ProviderR!.date?.year}",
+                        "Date : ${providerr!.date?.day}/${providerr!.date?.month}/${providerr!.date?.year}",
                         style: const TextStyle(fontSize: 18),
                       ),
                       const Spacer(),
@@ -85,10 +92,10 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                           onPressed: () async {
                             DateTime? d1 = await showDatePicker(
                                 context: context,
-                                initialDate: ProviderR!.date!,
+                                initialDate: providerr!.date!,
                                 firstDate: DateTime(2001),
                                 lastDate: DateTime(2050));
-                            ProviderR!.changeDate(d1!);
+                            providerr!.changeDate(d1!);
                           },
                           icon: const Icon(Icons.calendar_month))
                     ],
@@ -100,21 +107,31 @@ class _AndroidHomeScreenState extends State<AndroidHomeScreen> {
                     children: [
                       const Padding(padding: EdgeInsets.all(10)),
                       Text(
-                        "Time : ${ProviderR!.time!.hour}:${ProviderW!.time!.minute}",
-                        style: TextStyle(fontSize: 18),
+                        "Time : ${providerr!.time!.hour}:${providerw!.time!.minute}",
+                        style: const TextStyle(fontSize: 18),
                       ),
                       const Spacer(),
                       IconButton(
                         onPressed: () async {
                           TimeOfDay? d2 = await showTimePicker(
-                              context: context, initialTime: ProviderR!.time!);
-                          ProviderR!.changeTime(d2!);
+                              context: context, initialTime: providerr!.time!);
+                          providerr!.changeTime(d2!);
                         },
                         icon: const Icon(Icons.timer_outlined),
                       ),
                     ],
                   ),
-                  ElevatedButton(onPressed: () {}, child: Text("Save"))
+                  ElevatedButton(onPressed: () {
+                    HomeModal cm = HomeModal(
+                      name: txtName.text,
+                      chat: txtChat.text,
+                      phone: txtPhoneNo.text,
+                      date: txtDate.text,
+                      time: txtTime.text,
+                    );
+                    providerr!.addContactData(cm);
+                    providerw!.dashIndex;
+                  }, child: const Text("Save"),)
                 ],
               ),
             ),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:plateform_converter_app/screen/dashScreen/android_dash_sceen.dart';
 import 'package:plateform_converter_app/screen/dashScreen/provider/dash_provider.dart';
+import 'package:plateform_converter_app/screen/dashscreen/view/android_dash_sceen.dart';
 import 'package:plateform_converter_app/screen/home/provider/contact_provider.dart';
+import 'package:plateform_converter_app/screen/settingScreen/provider/setting_provider.dart';
 import 'package:plateform_converter_app/utils/app_theme.dart';
 import 'package:plateform_converter_app/utils/thme_provider.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +21,9 @@ void main(){
       ),
         ChangeNotifierProvider(
         create: (context) => ThemeProvider(),
+      ),
+        ChangeNotifierProvider(
+        create: (context) => SettingProvider(),
       ),
       ],
       child: Consumer<ThemeProvider>(builder: (context, value, child) {
