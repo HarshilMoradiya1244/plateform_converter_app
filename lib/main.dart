@@ -29,7 +29,7 @@ void main() {
           create: (context) => SettingProvider(),
         ),
       ],
-      child: Platform.isAndroid
+      child: Platform.isIOS
           ? Consumer<ThemeProvider>(builder: (context, value, child) {
               value.changeThem();
               return MaterialApp(

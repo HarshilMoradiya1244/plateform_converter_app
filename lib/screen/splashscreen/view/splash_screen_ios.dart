@@ -13,7 +13,7 @@ class _SplashScreeniosState extends State<SplashScreenios> {
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacementNamed(context, 'dash');
     });
-    return CupertinoPageScaffold(backgroundColor:CupertinoColors.white,child:
+    return CupertinoPageScaffold(child:
          Center(
           child: Image.asset(
             "assets/images/ios_image.png",

@@ -15,7 +15,6 @@ class _SplashScreenAndroidState extends State<SplashScreenAndroid> {
     });
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
         body: Center(
           child: Image.asset(
             "assets/images/android_image.png",

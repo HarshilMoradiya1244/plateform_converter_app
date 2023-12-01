@@ -55,7 +55,7 @@ class _ChatScreenIosState extends State<ChatScreenIos> {
                         ? CircleAvatar(
                           radius: 25,
                           backgroundImage: FileImage(File(
-                            "${providerw!.addDataList[index].imagePath}",
+                            "${providerr!.addDataList[index].imagePath}",
                           )),
                         )
                         : Container(
