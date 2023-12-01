@@ -45,9 +45,14 @@ samples, guidance on mobile development, and a full API reference.
 
 <p>
   
-This UI works on both Android and iOS platforms.
-This entire ui is built on contact application.
-This UI is also useful for calling and messaging.
-This UI also includes insert, update, and delete functionality.
-This application can easily work on both Android and iOS platforms.
+1. This UI works on both Android and iOS platforms.
+2. This UI is built on contact application.
+3. This UI is also useful for calling and messaging.
+4. This UI also includes insert, update, and delete functionality.
+5. This application can easily work on both Android and iOS platforms.
+6. In this ui we can create our profile
+7. We can also add our bio
+8. Light theme and dark theme are also included in this UI
+9. In UI we can also add and update photos in our profile
+10. In this UI we can also upload photo in our saved contact and update it
 </p>
