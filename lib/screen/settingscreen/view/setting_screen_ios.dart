@@ -19,6 +19,8 @@ class SettingScreenIos extends StatefulWidget {
 class _SettingScreenIosState extends State<SettingScreenIos> {
   SettingProvider? providerw;
   SettingProvider? providerr;
+  TextEditingController txtName = TextEditingController ();
+  TextEditingController txtBio = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -101,11 +103,13 @@ class _SettingScreenIosState extends State<SettingScreenIos> {
                       const SizedBox(
                         height: 10,
                       ),
-                      const CupertinoTextField.borderless(
+                       CupertinoTextField.borderless(
+                        controller: txtName,
                         textAlign: TextAlign.center,
                         placeholder: "Enter your name..",
                       ),
-                      const CupertinoTextField.borderless(
+                       CupertinoTextField.borderless(
+                         controller: txtBio,
                         textAlign: TextAlign.center,
                         placeholder: "Enter your bio..",
                       ),

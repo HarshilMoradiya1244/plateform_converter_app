@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../utils/color_list.dart';
 import '../../home/provider/contact_provider.dart';
@@ -90,7 +91,11 @@ class _CallScreenIosState extends State<CallScreenIos> {
                       ],
                     ),
                     const Spacer(),
-                   IconButton(onPressed: (){}, icon: const Icon(CupertinoIcons.phone_fill),)
+                   GestureDetector(onTap: ()async {
+                     Uri uri = Uri.parse(
+                         "tel: +91${providerr!.addDataList[index].phone}");
+                     await launchUrl(uri);
+                   }, child: const Icon(CupertinoIcons.phone_fill),)
                   ],
                 ),
               ),
