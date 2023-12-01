@@ -28,39 +28,46 @@ class _DashScreenIosState extends State<DashScreenIos> {
   Widget build(BuildContext context) {
     providerr = context.read<DashProvider>();
     providerw = context.watch<DashProvider>();
-    return CupertinoTabScaffold(
-      tabBar: CupertinoTabBar(
-        currentIndex: providerr!.stepIndex, onTap: (value) {
-        int i = value;
-        providerr!.changeStep(i);
-      },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.person),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.chat_bubble_text),
-            label: 'Chat',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.phone),
-            label: 'Contact',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.settings),
-            label: 'Contact',
-          ),
-        ],
-      ),
-      tabBuilder: (context, index) {
-        return CupertinoTabView(
-          builder: (context) {
-            return screens[
-            providerw!.stepIndex
-            ];
-          },
-        );
-      },);
+    return CupertinoPageScaffold(
+      navigationBar: const CupertinoNavigationBar(
+          middle: Text(
+            "Plateform Converter",
+            style: TextStyle(fontSize: 20),
+          )),
+      child: CupertinoTabScaffold(
+        tabBar: CupertinoTabBar(
+          currentIndex: providerr!.stepIndex, onTap: (value) {
+          int i = value;
+          providerr!.changeStep(i);
+        },
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.person),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.chat_bubble_text),
+              label: 'Chat',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.phone),
+              label: 'Contact',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.settings),
+              label: 'Contact',
+            ),
+          ],
+        ),
+        tabBuilder: (context, index) {
+          return CupertinoTabView(
+            builder: (context) {
+              return screens[
+              providerw!.stepIndex
+              ];
+            },
+          );
+        },),
+    );
   }
 }

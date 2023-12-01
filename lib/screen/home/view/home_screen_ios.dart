@@ -31,11 +31,6 @@ class _HomeScreenIosState extends State<HomeScreenIos> {
     providerw = context.watch<ContactProvider>();
 
     return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-          middle: Text(
-        "Plateform Converter",
-        style: TextStyle(fontSize: 20),
-      )),
       child: SingleChildScrollView(
         child: Column(
           children: [

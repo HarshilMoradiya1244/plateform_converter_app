@@ -18,7 +18,7 @@ class _DashScreenAndroidState extends State<DashScreenAndroid> {
   DashProvider? providerw;
 
   List<Widget> screen = [
-   const HomeScreenAndroid(),
+    const HomeScreenAndroid(),
     const ChatScreenAndroid(),
     const CallScreenAndroid(),
     const SettingScreenAndroid(),
@@ -32,14 +32,17 @@ class _DashScreenAndroidState extends State<DashScreenAndroid> {
       length: 4,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Plateform Converter"),
+          title: const Text("Plateform Converter"),
+          actions: [
+            Switch(value: providerr!.isChange, onChanged: (value) {},)
+          ],
           bottom: const TabBar(
             tabs: [
               Tab(
                 icon: Icon(Icons.person_add_alt),
               ),
               Tab(
-               text: "Chat",
+                text: "Chat",
               ),
               Tab(
                 text: "Call",

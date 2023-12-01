@@ -27,12 +27,6 @@ class _SettingScreenIosState extends State<SettingScreenIos> {
     providerr = context.read<SettingProvider>();
     providerw = context.watch<SettingProvider>();
     return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-        middle: Text(
-          "Plateform Converter",
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(

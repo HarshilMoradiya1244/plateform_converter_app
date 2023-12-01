@@ -23,11 +23,6 @@ class _CallScreenIosState extends State<CallScreenIos> {
     providerr = context.read<ContactProvider>();
     providerw = context.watch<ContactProvider>();
     return   CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-          middle: Text(
-            "Plateform Converter",
-            style: TextStyle(fontSize: 20),
-          )),
       child: ListView.builder(
         itemCount: providerw!.addDataList.length,
         itemBuilder: (context, index) {
