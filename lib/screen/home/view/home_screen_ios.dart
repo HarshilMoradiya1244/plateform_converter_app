@@ -80,6 +80,7 @@ class _HomeScreenIosState extends State<HomeScreenIos> {
                     SizedBox(
                       width: 280,
                       child: CupertinoTextField(
+                        keyboardType: TextInputType.text,
                         controller: txtName,
                         cursorColor: CupertinoColors.black,
                       ),
@@ -101,6 +102,7 @@ class _HomeScreenIosState extends State<HomeScreenIos> {
                     SizedBox(
                       width: 280,
                       child: CupertinoTextField(
+                        keyboardType: TextInputType.phone,
                         controller: txtPhoneNo,
                         cursorColor: CupertinoColors.black,
                       ),
@@ -122,6 +124,7 @@ class _HomeScreenIosState extends State<HomeScreenIos> {
                     SizedBox(
                       width: 280,
                       child: CupertinoTextField(
+                        keyboardType: TextInputType.text,
                         controller: txtChat,
                         cursorColor: CupertinoColors.black,
                       ),

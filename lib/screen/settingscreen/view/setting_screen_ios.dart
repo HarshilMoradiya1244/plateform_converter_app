@@ -88,14 +88,14 @@ class _SettingScreenIosState extends State<SettingScreenIos> {
                                     : null,
                               );
                           },),
-                          IconButton(
-                              onPressed: () async {
+                          GestureDetector(
+                              onTap: () async {
                                 ImagePicker imgPiker = ImagePicker();
                                 XFile? image = await imgPiker.pickImage(
                                     source: ImageSource.gallery);
                                 context.read<ContactProvider>().profileImage(image!.path);
                               },
-                              icon: const Icon(Icons.camera_alt))
+                              child: const Icon(Icons.camera_alt))
                         ],
                       ),
                       const SizedBox(
