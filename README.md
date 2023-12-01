@@ -42,3 +42,12 @@ samples, guidance on mobile development, and a full API reference.
    <img src="https://github.com/HarshilMoradiya1244/plateform_converter_app/assets/142592789/36b09ee0-e8af-4fd3-9223-4685d92ea095",hieght="500"width="150">
 
 </p>
+
+<p>
+  
+This UI works on both Android and iOS platforms.
+This entire ui is built on contact application.
+This UI is also useful for calling and messaging.
+This UI also includes insert, update, and delete functionality.
+This application can easily work on both Android and iOS platforms.
+</p>
