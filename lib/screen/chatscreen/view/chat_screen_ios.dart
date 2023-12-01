@@ -39,6 +39,7 @@ class _ChatScreenIosState extends State<ChatScreenIos> {
                   name: providerr!.addDataList[index].name,
                   phone: providerr!.addDataList[index].phone,
                   imagePath: providerr!.addDataList[index].imagePath);
+              providerr!.storeIndex(index);
               showCupertinoWidget(context, c1);
             },
             child: Container(

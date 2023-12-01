@@ -44,7 +44,9 @@ class _ChatScreenAndroidState extends State<ChatScreenAndroid> {
                                 name: providerr!.addDataList[index].name,
                                 phone: providerr!.addDataList[index].phone,
                                 imagePath: providerr!.addDataList[index].imagePath);
+                            providerr!.storeIndex(index);
                             showWidget(context, c1);
+
                           },
                           child: CircleAvatar(
                             radius: 25,
@@ -59,6 +61,8 @@ class _ChatScreenAndroidState extends State<ChatScreenAndroid> {
                                 name: providerr!.addDataList[index].name,
                                 phone: providerr!.addDataList[index].phone,
                                 imagePath: providerr!.addDataList[index].imagePath);
+                            providerr!.storeIndex(index);
+
                             showWidget(context, c1);
                           },
                           child: Container(

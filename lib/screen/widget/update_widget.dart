@@ -8,6 +8,7 @@ import '../home/provider/contact_provider.dart';
 void showWidget(BuildContext context, HomeModal c1) {
   TextEditingController txtName = TextEditingController(text: c1.name);
   TextEditingController txtChat = TextEditingController(text: c1.chat);
+  TextEditingController txtPhone = TextEditingController(text: c1.phone);
 
   showDialog(
     context: context,
@@ -35,24 +36,32 @@ void showWidget(BuildContext context, HomeModal c1) {
                                   context.read<ContactProvider>().updateImagePath(image!.path);
                                 },
                                 child: const Text("Choose Photo")),
+                            TextButton(
+                                onPressed: () async {
+                                  ImagePicker picker = ImagePicker();
+                                  XFile? image = await picker.pickImage(
+                                      source: ImageSource.camera);
+                                  context.read<ContactProvider>().updateImagePath(image!.path);
+                                },
+                                child: const Text("Take Photo")),
                           ],
                         );
                       },
                     );
                   },
                   child: c1.imagePath != null ||
-                      context.read<ContactProvider>().path != null
+                          context.read<ContactProvider>().path != null
                       ? CircleAvatar(
-                    radius: 60,
-                    backgroundImage: FileImage(File("${c1.imagePath}")),
-                  )
+                          radius: 70,
+                          backgroundImage: FileImage(File("${c1.imagePath}")),
+                        )
                       : CircleAvatar(
-                    radius: 60,
-                    child: Text(
-                      "${c1.name!.substring(0, 1).toUpperCase()}",
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                  )),
+                          radius: 80,
+                          child: Text(
+                            "${c1.name!.substring(0, 1).toUpperCase()}",
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                        )),
             ),
             const SizedBox(
               height: 10,
@@ -75,25 +84,26 @@ void showWidget(BuildContext context, HomeModal c1) {
             const SizedBox(
               height: 10,
             ),
-            Row(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    HomeModal c1 = HomeModal();
-                    c1.name = txtName.text;
-                    c1.chat = txtChat.text;
-                    c1.imagePath = context.read<ContactProvider>().path;
-                    context.read<ContactProvider>().editContact(c1);
-                    Navigator.pop(context);
-                  },
-                  child: const Text("Update"),
-                ),
-                const SizedBox(width: 10,),
-                ElevatedButton(onPressed: (){
-                  context.read<ContactProvider>().contactDelete();
-                  Navigator.pop(context);
-                }, child: const Text("Delete",),),
-              ],
+            TextField(
+              controller: txtPhone,
+              keyboardType: TextInputType.phone,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(), label: Text("Phone")),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                HomeModal c1 = HomeModal();
+                c1.name = txtName.text;
+                c1.chat = txtChat.text;
+                c1.phone=txtPhone.text;
+                c1.imagePath = context.read<ContactProvider>().path;
+                context.read<ContactProvider>().editContact(c1);
+                Navigator.pop(context);
+              },
+              child: const Text("Update"),
             )
           ],
         ),

@@ -6,6 +6,7 @@ class SettingProvider with ChangeNotifier {
 
   bool? isVisible = false;
   bool isLight = true;
+  String? path;
 
 
   void profile()  {
@@ -18,6 +19,12 @@ class SettingProvider with ChangeNotifier {
     isLight = isTheme ?? false;
     notifyListeners();
   }
+
+  void updateImage(String? newPath) {
+    path = newPath;
+    notifyListeners();
+  }
+
 
 
 

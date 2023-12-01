@@ -14,7 +14,6 @@ class ContactProvider with ChangeNotifier {
   int? infoIndex = 0;
   String? imagePath;
   String? path;
-  String? profilePath;
   bool isLock = false;
 
 
@@ -54,10 +53,6 @@ class ContactProvider with ChangeNotifier {
 
   void updateImagePath(String? newPath) {
     path = newPath;
-    notifyListeners();
-  }
-  void profileImage(String? newPath) {
-    profilePath = newPath;
     notifyListeners();
   }
 

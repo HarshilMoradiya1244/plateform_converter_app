@@ -95,7 +95,7 @@ class _SettingScreenIosState extends State<SettingScreenIos> {
                                 ImagePicker imgPiker = ImagePicker();
                                 XFile? image = await imgPiker.pickImage(
                                     source: ImageSource.gallery);
-                                context.read<ContactProvider>().profileImage(image!.path);
+                                context.read<ContactProvider>().updateImagePath(image!.path);
                               },
                               child: const Icon(Icons.camera_alt))
                         ],

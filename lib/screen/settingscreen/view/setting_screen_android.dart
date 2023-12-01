@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:plateform_converter_app/screen/settingScreen/provider/setting_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../utils/share_helper.dart';
 import '../../../utils/theme_provider.dart';
+import '../../home/provider/contact_provider.dart';
 
 class SettingScreenAndroid extends StatefulWidget {
   const SettingScreenAndroid({super.key});
@@ -59,36 +63,71 @@ class _SettingScreenAndroidState extends State<SettingScreenAndroid> {
                 ),
                 (providerr!.isVisible == true)
                     ? Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const CircleAvatar(
-                            radius: 60,
-                            child: Icon(
-                              Icons.camera_alt_outlined,
-                              size: 30,
-                            ),
+                          Column(
+                            children: [
+                              Consumer<ContactProvider>(
+                                builder: (context, value, child) {
+                                  return CircleAvatar(
+                                    radius: 70,
+                                    backgroundColor: Colors.blue,
+                                    backgroundImage: value.path != null
+                                        ? FileImage(File(value.path!))
+                                        : null,
+                                  );
+                                },
+                              ),
+                              GestureDetector(
+                                  onTap: () async {
+                                    ImagePicker imgPiker = ImagePicker();
+                                    XFile? image = await imgPiker.pickImage(
+                                        source: ImageSource.gallery);
+                                    context
+                                        .read<ContactProvider>()
+                                        .updateImagePath(image!.path);
+                                  },
+                                  child: const Icon(Icons.camera_alt))
+                            ],
                           ),
-                           TextField(
-                             controller: txtName,
-                            keyboardType: TextInputType.emailAddress,
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          TextField(
+                            controller: txtName,
+                            textAlign: TextAlign.center,
                             decoration: const InputDecoration(
-                                label: Center(child: Text("Enter Your Name")),
+                                label: Text(
+                                  "Enter your name..",
+                                ),
                                 enabledBorder: InputBorder.none),
                           ),
-                           TextField(
+                          TextField(
                             controller: txtBio,
-                            keyboardType: TextInputType.emailAddress,
+                            textAlign: TextAlign.center,
                             decoration: const InputDecoration(
-                                label: Center(child: Text("Enter Your Bio")),
+                                label: Text(
+                                  "Enter your Bio..",
+                                ),
                                 enabledBorder: InputBorder.none),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               TextButton(
-                                  onPressed: () {}, child: const Text("Save")),
+                                child: const Text(
+                                  "Save",
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                                onPressed: () {},
+                              ),
                               TextButton(
-                                  onPressed: () {}, child: const Text("Clear")),
+                                child: const Text(
+                                  "Clear",
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                                onPressed: () {},
+                              ),
                             ],
                           )
                         ],
