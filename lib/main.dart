@@ -29,23 +29,20 @@ void main() {
           create: (context) => SettingProvider(),
         ),
       ],
-      child: Platform.isAndroid
-          ? Consumer<ThemeProvider>(builder: (context, value, child) {
-              value.changeThem();
-              return MaterialApp(
-                  theme: value.isLight ? lightTheme : darkTheme,
-                  debugShowCheckedModeBanner: false,
-                  routes: screen_routes_android);
-            })
-          : Consumer<ThemeProvider>(
-              builder: (context, value, child) {
-                value.changeThem();
-                return CupertinoApp(
-                    theme: value.isLight ? lightThemeIos : darkThemeIos,
-                    debugShowCheckedModeBanner: false,
-                    routes: screen_routes_ios);
-              },
-            ),
+        child: Consumer<ThemeProvider>(
+          builder: (context, value, child) {
+            value.changeThem();
+            return context.read<ThemeProvider>().changeUI?MaterialApp(
+              theme: value.isLight ? darkTheme : lightTheme,
+              debugShowCheckedModeBanner: false,
+              routes: screen_routes_android,
+            ) : CupertinoApp(
+              theme: value.isLight ? darkThemeIos : lightThemeIos,
+              debugShowCheckedModeBanner: false,
+              routes: screen_routes_ios,
+            );
+          },
+        )
     ),
   );
 }

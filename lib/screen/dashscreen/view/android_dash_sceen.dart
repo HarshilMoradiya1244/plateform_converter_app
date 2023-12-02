@@ -6,6 +6,8 @@ import 'package:plateform_converter_app/screen/home/view/home_screen_android.dar
 import 'package:plateform_converter_app/screen/settingScreen/view/setting_screen_android.dart';
 import 'package:provider/provider.dart';
 
+import '../../../utils/theme_provider.dart';
+
 class DashScreenAndroid extends StatefulWidget {
   const DashScreenAndroid({super.key});
 
@@ -34,7 +36,16 @@ class _DashScreenAndroidState extends State<DashScreenAndroid> {
         appBar: AppBar(
           title: const Text("Plateform Converter"),
           actions: [
-            Switch(value: providerr!.isChange, onChanged: (value) {},)
+            Consumer(
+              builder: (BuildContext context, value, Widget? child) {
+                return Switch(
+                  value: context.read<ThemeProvider>().changeUI,
+                  onChanged: (value) {
+                    context.read<ThemeProvider>().changeAppUi(value);
+                  },
+                );
+              },
+            )
           ],
           bottom: const TabBar(
             tabs: [

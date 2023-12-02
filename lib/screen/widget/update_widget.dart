@@ -104,7 +104,15 @@ void showWidget(BuildContext context, HomeModal c1) {
                 Navigator.pop(context);
               },
               child: const Text("Update"),
-            )
+            ),
+            ElevatedButton(
+              onPressed: () {
+                context.read<ContactProvider>().contactDelete();
+                Navigator.pop(context);
+              },
+              child: const Text("Delete"),
+            ),
+
           ],
         ),
       );

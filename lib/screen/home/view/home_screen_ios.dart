@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
+import '../../../utils/theme_provider.dart';
 import '../modal/home_modal.dart';
 import '../provider/contact_provider.dart';
 
@@ -31,6 +32,17 @@ class _HomeScreenIosState extends State<HomeScreenIos> {
     providerw = context.watch<ContactProvider>();
 
     return CupertinoPageScaffold(
+      navigationBar:  CupertinoNavigationBar(
+        middle: const Text(
+          "Platform Converter",
+        ),
+        trailing:  CupertinoSwitch(
+          value: context.read<ThemeProvider>().changeUI,
+          onChanged: (value) {
+            context.read<ThemeProvider>().changeAppUi(value);
+          },
+        ),
+      ),
       child: SingleChildScrollView(
         child: Column(
           children: [
