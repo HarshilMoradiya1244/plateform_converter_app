@@ -93,26 +93,30 @@ void showWidget(BuildContext context, HomeModal c1) {
             const SizedBox(
               height: 10,
             ),
-            ElevatedButton(
-              onPressed: () {
-                HomeModal c1 = HomeModal();
-                c1.name = txtName.text;
-                c1.chat = txtChat.text;
-                c1.phone=txtPhone.text;
-                c1.imagePath = context.read<ContactProvider>().path;
-                context.read<ContactProvider>().editContact(c1);
-                Navigator.pop(context);
-              },
-              child: const Text("Update"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                context.read<ContactProvider>().contactDelete();
-                Navigator.pop(context);
-              },
-              child: const Text("Delete"),
-            ),
-
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    HomeModal c1 = HomeModal();
+                    c1.name = txtName.text;
+                    c1.chat = txtChat.text;
+                    c1.phone=txtPhone.text;
+                    c1.imagePath = context.read<ContactProvider>().path;
+                    context.read<ContactProvider>().editContact(c1);
+                    Navigator.pop(context);
+                  },
+                  child: const Text("Update"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    context.read<ContactProvider>().contactDelete();
+                    Navigator.pop(context);
+                  },
+                  child: const Text("Delete"),
+                ),
+              ],
+            )
           ],
         ),
       );

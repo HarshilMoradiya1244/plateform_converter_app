@@ -32,17 +32,6 @@ class _HomeScreenIosState extends State<HomeScreenIos> {
     providerw = context.watch<ContactProvider>();
 
     return CupertinoPageScaffold(
-      navigationBar:  CupertinoNavigationBar(
-        middle: const Text(
-          "Platform Converter",
-        ),
-        trailing:  CupertinoSwitch(
-          value: context.read<ThemeProvider>().changeUI,
-          onChanged: (value) {
-            context.read<ThemeProvider>().changeAppUi(value);
-          },
-        ),
-      ),
       child: SingleChildScrollView(
         child: Column(
           children: [

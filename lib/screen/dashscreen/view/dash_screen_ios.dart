@@ -6,6 +6,8 @@ import 'package:plateform_converter_app/screen/home/view/home_screen_ios.dart';
 import 'package:plateform_converter_app/screen/settingscreen/view/setting_screen_ios.dart';
 import 'package:provider/provider.dart';
 
+import '../../../utils/theme_provider.dart';
+
 class DashScreenIos extends StatefulWidget {
   const DashScreenIos({super.key});
 
@@ -29,11 +31,17 @@ class _DashScreenIosState extends State<DashScreenIos> {
     providerr = context.read<DashProvider>();
     providerw = context.watch<DashProvider>();
     return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-          middle: Text(
-            "Plateform Converter",
-            style: TextStyle(fontSize: 20),
-          )),
+      navigationBar:  CupertinoNavigationBar(
+        middle: const Text(
+          "Platform Converter",
+        ),
+        trailing:  CupertinoSwitch(
+          value: context.read<ThemeProvider>().changeUI,
+          onChanged: (value) {
+            context.read<ThemeProvider>().changeAppUi(value);
+          },
+        ),
+      ),
       child: CupertinoTabScaffold(
         tabBar: CupertinoTabBar(
           currentIndex: providerr!.stepIndex, onTap: (value) {
