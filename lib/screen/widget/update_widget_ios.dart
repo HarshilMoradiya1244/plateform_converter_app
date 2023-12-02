@@ -51,30 +51,42 @@ void showCupertinoWidget(BuildContext context, HomeModal c1) {
               },
               child: c1.imagePath != null ||
                   context.read<ContactProvider>().path != null
-                  ? CircleAvatar(
-                radius: 70,
-                backgroundImage: FileImage(File("${c1.imagePath}")),
-              )
-                  : CircleAvatar(
-                radius: 80,
-                child: Text(
-                  "${c1.name!.substring(0, 1).toUpperCase()}",
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-              )),
+                  ? Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: CircleAvatar(
+                                    radius: 70,
+                                    backgroundImage: FileImage(File("${c1.imagePath}")),
+                                  ),
+                  )
+                  : Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: CircleAvatar(
+                                    radius: 80,
+                                    child: Text(
+                    "${c1.name!.substring(0, 1).toUpperCase()}",
+                    style: Theme.of(context).textTheme.titleLarge,
+                                    ),
+                                  ),
+                  )),
           const SizedBox(
             height: 10,
           ),
-          CupertinoTextField(
-            controller: txtName,
-            cursorColor: CupertinoColors.black,
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: CupertinoTextField(
+              controller: txtName,
+              cursorColor: CupertinoColors.black,
+            ),
           ),
           const SizedBox(
             height: 10,
           ),
-          CupertinoTextField(
-            controller: txtChat,
-            cursorColor: CupertinoColors.black,
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: CupertinoTextField(
+              controller: txtChat,
+              cursorColor: CupertinoColors.black,
+            ),
           ),
           const SizedBox(
             height: 10,
